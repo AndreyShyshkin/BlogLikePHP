@@ -1,14 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 4.9.0.1
+-- version 5.2.0
 -- https://www.phpmyadmin.net/
 --
--- Хост: sql101.epizy.com
--- Время создания: Май 27 2023 г., 13:54
--- Версия сервера: 10.4.17-MariaDB
--- Версия PHP: 7.2.22
+-- Хост: 127.0.0.1:3306
+-- Время создания: Май 27 2023 г., 21:18
+-- Версия сервера: 5.7.39
+-- Версия PHP: 8.1.9
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -19,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- База данных: `epiz_34300051_likeblog`
+-- База данных: `new_blog`
 --
 
 -- --------------------------------------------------------
@@ -30,13 +29,23 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `posts` (
   `id` int(11) NOT NULL,
-  `title` varchar(255) NOT NULL,
-  `text` text NOT NULL,
-  `description` varchar(255) NOT NULL,
+  `title` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `text` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `description` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `category_id` int(11) NOT NULL,
-  `created` datetime NOT NULL DEFAULT current_timestamp(),
-  `preview` varchar(255) NOT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+  `created` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `preview` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Дамп данных таблицы `posts`
+--
+
+INSERT INTO `posts` (`id`, `title`, `text`, `description`, `category_id`, `created`, `preview`) VALUES
+(1, 'The Newest Technology On This Year 2019', 'The Newest Technology On This Year 2019', 'The Newest Technology On This Year 2019', 2, '2023-05-25 19:37:01', 'images/image_1.jpg'),
+(3, 'The Newest Technology On This Year 2019', 'The Newest Technology On This Year 2019', 'The Newest Technology On This Year 2019', 1, '2023-05-25 19:37:01', 'images/image_1.jpg'),
+(4, 'The Newest Technology On This Year 2019', 'The Newest Technology On This Year 2019', 'The Newest Technology On This Year 2019', 3, '2023-05-25 19:37:01', 'images/image_1.jpg'),
+(5, 'The Newest Technology On This Year 2019', 'The Newest Technology On This Year 2019', 'The Newest Technology On This Year 2019', 3, '2023-05-25 19:37:01', 'images/image_1.jpg');
 
 --
 -- Индексы сохранённых таблиц
@@ -56,7 +65,7 @@ ALTER TABLE `posts`
 -- AUTO_INCREMENT для таблицы `posts`
 --
 ALTER TABLE `posts`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
